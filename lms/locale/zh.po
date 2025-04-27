@@ -4183,7 +4183,7 @@ msgid "Posted on"
 msgstr "发布于"
 
 #: frontend/src/components/AppSidebar.vue:92
-msgid "Powered by Learning"
+msgid "Powered by Testing"
 msgstr "技术支持：学习平台"
 
 #. Name of a DocType

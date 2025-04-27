@@ -4183,7 +4183,7 @@ msgid "Posted on"
 msgstr "crwdns150452:0crwdne150452:0"
 
 #: frontend/src/components/AppSidebar.vue:92
-msgid "Powered by Learning"
+msgid "Powered by Testing"
 msgstr "crwdns154618:0crwdne154618:0"
 
 #. Name of a DocType
