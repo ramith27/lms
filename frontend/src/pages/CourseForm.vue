@@ -14,7 +14,7 @@
 						</Button>
 						<Button variant="solid" @click="submitCourse()" class="ml-2">
 							<span>
-								{{ __('Save') }}
+								{{ __('Save') }} 
 							</span>
 						</Button>
 					</div>

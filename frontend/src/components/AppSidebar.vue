@@ -89,12 +89,6 @@
 							: 'flex-row space-x-3'
 					"
 				>
-					<Tooltip :text="__('Powered by Testing')">
-						<Zap
-							class="size-4 stroke-1.5 text-gray-700 cursor-pointer"
-							@click="redirectToWebsite()"
-						/>
-					</Tooltip>
 					<Tooltip :text="__('Help')">
 						<CircleHelp
 							class="size-4 stroke-1.5 text-gray-700 cursor-pointer"

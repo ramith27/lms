@@ -1,2 +1,149 @@
 @import './assets/Inter/inter.css';
 @import 'frappe-ui/src/style.css';
+
+
+/* ==================================================
+   Global Resets & Base Styles
+   ================================================== */
+   *,
+   *::before,
+   *::after {
+     box-sizing: border-box;
+     margin: 0;
+     padding: 0;
+   }
+   
+   html {
+     font-family: 'Poppins', 'Open Sans', sans-serif;
+     font-size: 16px;
+     color: #000000;
+     background-color: #FFFFFF;
+     line-height: 1.5;
+   }
+   
+   body {
+     font-size: 14px;
+   }
+   
+   /* ==================================================
+      Headings
+      ================================================== */
+   h1,
+   .heading-1 {
+     font-size: 32px;
+     font-weight: 700;
+   }
+   
+   h2,
+   .heading-2 {
+     font-size: 28px;
+     font-weight: 700;
+   }
+   
+   h3,
+   .heading-3 {
+     font-size: 24px;
+     font-weight: 700;
+   }
+   
+   /* ==================================================
+      Logo Utility
+      ================================================== */
+   .logo {
+     display: inline-block;
+     width: 160px;
+     height: auto;
+   }
+   .logo img {
+     width: 100%;
+     height: auto;
+   }
+   
+   /* ==================================================
+      Buttons & Links
+      ================================================== */
+   button,
+   .btn,
+   a.btn {
+     display: inline-block;
+     font-family: 'Poppins', 'Open Sans', sans-serif;
+     font-weight: 700;
+     font-size: 14px;
+     color: #FFFFFF;
+     background-color: #0073E6;
+     background: linear-gradient(
+       to bottom,
+       #007FFF, /* lighten(#0073E6, 5%) */
+       #0066CC  /* darken(#0073E6, 5%) */
+     );
+     border: none;
+     padding: 0.75em 1.5em;
+     text-decoration: none;
+     cursor: pointer;
+     transition: background 0.2s ease, transform 0.1s ease;
+   }
+   
+   button:hover,
+   button:focus,
+   .btn:hover,
+   .btn:focus,
+   a.btn:hover,
+   a.btn:focus {
+     background: linear-gradient(
+       to bottom,
+       #0087FF, /* lighten(#0073E6, 8%) */
+       #005DB8  /* darken(#0073E6, 8%) */
+     );
+   }
+   
+   button:active,
+   .btn:active,
+   a.btn:active {
+     transform: scale(0.98);
+   }
+   
+   /* ==================================================
+      Utility Classes
+      ================================================== */
+   .text-center {
+     text-align: center;
+   }
+   
+   .mt-1 {
+     margin-top: 1rem;
+   }
+   
+   .mt-2 {
+     margin-top: 2rem;
+   }
+   
+   .mb-1 {
+     margin-bottom: 1rem;
+   }
+   
+   .mb-2 {
+     margin-bottom: 2rem;
+   }
+   
+   /* ==================================================
+      Messaging Banner
+      ================================================== */
+   .banner {
+     background-color: #B3D0FF; /* lighten(#0073E6, 40%) */
+     color: #000000;
+     padding: 1.5em;
+     border-radius: 4px;
+     font-size: 14px;
+     margin-bottom: 2rem;
+   }
+   
+   .banner__title {
+     font-size: 28px;
+     font-weight: 700;
+     margin-bottom: 0.5em;
+   }
+   
+   .banner__text {
+     margin-bottom: 1em;
+   }
+   
