@@ -60,49 +60,6 @@
    }
    
    /* ==================================================
-      Buttons & Links
-      ================================================== */
-   button,
-   .btn,
-   a.btn {
-     display: inline-block;
-     font-family: 'Poppins', 'Open Sans', sans-serif;
-     font-weight: 700;
-     font-size: 14px;
-     color: #FFFFFF;
-     background-color: #0073E6;
-     background: linear-gradient(
-       to bottom,
-       #007FFF, /* lighten(#0073E6, 5%) */
-       #0066CC  /* darken(#0073E6, 5%) */
-     );
-     border: none;
-     padding: 0.75em 1.5em;
-     text-decoration: none;
-     cursor: pointer;
-     transition: background 0.2s ease, transform 0.1s ease;
-   }
-   
-   button:hover,
-   button:focus,
-   .btn:hover,
-   .btn:focus,
-   a.btn:hover,
-   a.btn:focus {
-     background: linear-gradient(
-       to bottom,
-       #0087FF, /* lighten(#0073E6, 8%) */
-       #005DB8  /* darken(#0073E6, 8%) */
-     );
-   }
-   
-   button:active,
-   .btn:active,
-   a.btn:active {
-     transform: scale(0.98);
-   }
-   
-   /* ==================================================
       Utility Classes
       ================================================== */
    .text-center {
