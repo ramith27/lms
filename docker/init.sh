@@ -34,6 +34,11 @@ bench new-site lms.localhost \
 
 bench --site lms.localhost install-app lms
 bench --site lms.localhost set-config developer_mode 1
+
+bench --site lms.localhost \
+  execute frappe.db.set_value \
+  --args "['System Settings','System Settings','login_with_email_link',0]"
+
 bench --site lms.localhost clear-cache
 bench use lms.localhost
 
