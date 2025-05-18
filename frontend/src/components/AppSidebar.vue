@@ -63,17 +63,7 @@
 			</div>
 		</div>
 		<div class="m-2 flex flex-col gap-1">
-			<TrialBanner
-				v-if="
-					userResource.data?.is_system_manager && userResource.data?.is_fc_site
-				"
-				:isSidebarCollapsed="sidebarStore.isSidebarCollapsed"
-			/>
-			<GettingStartedBanner
-				v-if="showOnboarding && !isOnboardingStepsCompleted"
-				:isSidebarCollapsed="sidebarStore.isSidebarCollapsed"
-				appName="learning"
-			/>
+
 
 			<div
 				class="flex items-center mt-4"
