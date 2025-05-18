@@ -71,26 +71,6 @@
 					sidebarStore.isSidebarCollapsed ? 'flex-col space-y-3' : 'flex-row'
 				"
 			>
-				<div
-					class="flex items-center flex-1"
-					:class="
-						sidebarStore.isSidebarCollapsed
-							? 'flex-col space-y-3'
-							: 'flex-row space-x-3'
-					"
-				>
-					<Tooltip :text="__('Help')">
-						<CircleHelp
-							class="size-4 stroke-1.5 text-gray-700 cursor-pointer"
-							@click="
-								() => {
-									showHelpModal = minimize ? true : !showHelpModal
-									minimize = !showHelpModal
-								}
-							"
-						/>
-					</Tooltip>
-				</div>
 				<Tooltip
 					:text="
 						sidebarStore.isSidebarCollapsed ? __('Expand') : __('Collapse')
