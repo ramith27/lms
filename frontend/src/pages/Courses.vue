@@ -1,93 +1,150 @@
 <template>
-	<header
-		class="sticky flex items-center justify-between top-0 z-10 border-b bg-surface-white px-3 py-2.5 sm:px-5"
-	>
-		<Breadcrumbs :items="breadcrumbs" />
-		<router-link
-			v-if="canCreateCourse()"
-			:to="{
-				name: 'CourseForm',
-				params: { courseName: 'new' },
-			}"
-		>
-			<Button variant="solid">
-				<template #prefix>
-					<Plus class="h-4 w-4 stroke-1.5" />
-				</template>
-				{{ __('New') }}
-			</Button>
-		</router-link>
-	</header>
-	<div class="p-5 pb-10">
-		<div
-			class="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:items-center justify-between mb-5"
-		>
-			<div class="text-lg text-ink-gray-9 font-semibold">
-				{{ __('All Courses') }}
-			</div>
-			<div
-				class="flex flex-col space-y-2 lg:space-y-0 lg:flex-row lg:items-center lg:space-x-4"
+	<!-- Silicon Navigation Header -->
+	<header class="si-nav">
+		<div class="si-nav-content">
+			<Breadcrumbs :items="breadcrumbs" />
+			<router-link
+				v-if="canCreateCourse()"
+				:to="{
+					name: 'CourseForm',
+					params: { courseName: 'new' },
+				}"
 			>
+				<Button variant="solid" class="si-btn si-btn-primary">
+					<template #prefix>
+						<Plus class="h-4 w-4 stroke-1.5" />
+					</template>
+					{{ __('New Course') }}
+				</Button>
+			</router-link>
+		</div>
+	</header>
+
+	<!-- Silicon Hero Section -->
+	<section class="si-hero">
+		<div class="si-hero-content">
+			<h1 class="si-hero-title si-animate-fadeInUp">
+				{{ __('Discover Amazing Courses') }}
+			</h1>
+			<p class="si-hero-subtitle si-animate-fadeInUp">
+				{{ __('Explore our comprehensive collection of courses designed to help you learn new skills and advance your career.') }}
+			</p>
+		</div>
+	</section>
+
+	<!-- Silicon Search Container -->
+	<div class="max-w-7xl mx-auto px-6 -mt-16 relative z-10">
+		<div class="si-search-container si-animate-slideInUp">
+			<!-- Filter Tabs -->
+			<div class="si-filter-tabs">
 				<TabButtons :buttons="courseTabs" v-model="currentTab" />
-				<FormControl
-					v-model="certification"
-					:label="__('Certification')"
-					type="checkbox"
-					@change="updateCourses()"
-				/>
-				<div class="grid grid-cols-2 gap-2">
+			</div>
+			
+			<!-- Search and Filters Row -->
+			<div class="flex flex-col lg:flex-row gap-4 items-start lg:items-center">
+				<!-- Search Input -->
+				<div class="flex-1 w-full">
 					<FormControl
 						v-model="title"
-						:placeholder="__('Search by Title')"
+						:placeholder="__('Search courses...')"
 						type="text"
-						class="min-w-40 lg:min-w-0 lg:w-32 xl:w-40"
+						class="si-search-input"
 						@input="updateCourses()"
 					/>
-					<div class="min-w-40 lg:min-w-0 lg:w-32 xl:w-40">
-						<Select
-							v-if="categories.length"
-							v-model="currentCategory"
-							:options="categories"
-							:placeholder="__('Category')"
+				</div>
+				
+				<!-- Filter Controls -->
+				<div class="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
+					<Select
+						v-if="categories.length"
+						v-model="currentCategory"
+						:options="categories"
+						:placeholder="__('All Categories')"
+						@change="updateCourses()"
+						class="min-w-40"
+					/>
+					
+					<div class="flex items-center space-x-2">
+						<FormControl
+							v-model="certification"
+							:label="__('Certified Only')"
+							type="checkbox"
 							@change="updateCourses()"
+							class="flex items-center"
 						/>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
+
+	<!-- Silicon Course Grid Section -->
+	<div class="max-w-7xl mx-auto px-6 pb-20">
+		<!-- Courses Grid -->
 		<div
 			v-if="courses.data?.length"
-			class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4"
+			class="si-course-grid si-animate-fadeInUp"
 		>
 			<router-link
 				v-for="course in courses.data"
+				:key="course.name"
 				:to="{ name: 'CourseDetail', params: { courseName: course.name } }"
+				class="block transform transition-all duration-300 hover:scale-105"
 			>
 				<CourseCard :course="course" />
 			</router-link>
 		</div>
+
+		<!-- Silicon Empty State -->
 		<div
 			v-else-if="!courses.list.loading"
-			class="flex flex-col items-center justify-center text-sm text-ink-gray-5 italic mt-48"
+			class="text-center py-20 si-animate-fadeInUp"
 		>
-			<BookOpen class="size-10 mx-auto stroke-1 text-ink-gray-4" />
-			<div class="text-lg font-medium mb-1">
-				{{ __('No courses found') }}
-			</div>
-			<div class="leading-5 w-2/5 text-center">
-				{{
-					__(
-						'There are no courses matching the criteria. Keep an eye out, fresh learning experiences are on the way soon!'
-					)
-				}}
+			<div class="si-card max-w-lg mx-auto">
+				<div class="si-card-content text-center py-16">
+					<div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-full flex items-center justify-center">
+						<BookOpen class="w-10 h-10 text-blue-500 stroke-1" />
+					</div>
+					<h3 class="text-2xl font-bold text-gray-900 mb-4">
+						{{ __('No courses found') }}
+					</h3>
+					<p class="text-gray-600 leading-relaxed mb-6">
+						{{
+							__(
+								'There are no courses matching your criteria. Keep an eye out, fresh learning experiences are on the way soon!'
+							)
+						}}
+					</p>
+					<Button @click="() => { title = ''; currentCategory = null; certification = false; updateCourses(); }" 
+						class="si-btn si-btn-outline">
+						{{ __('Clear Filters') }}
+					</Button>
+				</div>
 			</div>
 		</div>
+
+		<!-- Loading State -->
+		<div
+			v-if="courses.list.loading && !courses.data?.length"
+			class="si-course-grid"
+		>
+			<div v-for="i in 6" :key="i" class="si-card animate-pulse">
+				<div class="h-48 bg-gray-200 rounded-t-xl"></div>
+				<div class="si-card-content">
+					<div class="h-4 bg-gray-200 rounded mb-3"></div>
+					<div class="h-3 bg-gray-200 rounded mb-2 w-3/4"></div>
+					<div class="h-3 bg-gray-200 rounded w-1/2"></div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Silicon Load More Button -->
 		<div
 			v-if="!courses.list.loading && courses.hasNextPage"
-			class="flex justify-center mt-5"
+			class="flex justify-center mt-12 si-animate-fadeInUp"
 		>
-			<Button @click="courses.next()">
-				{{ __('Load More') }}
+			<Button @click="courses.next()" class="si-btn si-btn-outline hover:si-btn-primary">
+				{{ __('Load More Courses') }}
 			</Button>
 		</div>
 	</div>
